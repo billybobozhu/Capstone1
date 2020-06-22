@@ -1,99 +1,98 @@
 <style lang="scss">
-  .container {
-        width: 500px;
-        height: 300px;
-        padding: 20px;
-        border: 1px solid #ccc;
-        position: relative;
-    }
-    .card-item {
-        width: 700px;
-        height: 200px;
-        line-height: 198px;
-        text-align: center;
-        font-size: 18px;
-        border-radius: 5px;
-        position: absolute;
-    }
-    .card-item.t30 {
-        top: 30px;
-        animation: positionAnimate1 1.1s
-    }
-    .card-item.t60 {
-        top: 60px;
-        animation: positionAnimate1 0.9s
-    }
-    .card-item.t90 {
-        top: 90px;
-        animation: positionAnimate1 0.7s
-    }
-    .card-item.t120 {
-        top: 120px;
-        box-shadow: 0 0 2px 2px #fff;
-        animation: positionAnimate 0.5s
-    }
-    .card-item.t150 {
-        top: 150px;
-        box-shadow: 0 0 2px 2px #fff;
-        animation: positionAnimate 0.3s
-    }
-    @keyframes positionAnimate1 {
-        0% {
-            opacity: 0;
-            transform: scale(0.9);
-        }
-        100% {
-            transform: scale(1);
-            opacity: 1;
-        }
-    }
-    @keyframes positionAnimate {
-        0% {
-            opacity: 0;
-            transform: scale(1.1);
-        }
-        100% {
-            transform: scale(1);
-            opacity: 1;
-        }
-    }
-    .card-item.z1 {
-        z-index:  1;
-    }
-    .card-item.z2 {
-        z-index:  2;
-    }
-    .card-item.z3 {
-        z-index:  3;
-    }
-    .card-item.z4 {
-        z-index:  4;
-    }
-    .card-item.z5 {
-        z-index:  5;
-    }
-    .card-item.red {
-        border: 1px solid grey;
-        background-color: grey;
-    }
-    .card-item.blue {
-        border: 1px solid blue;
-        background-color: blue;
-    }
-    .card-item.yellow {
-        border: 1px solid brown;
-        background-color: brown;
-    }
-    .card-item.green {
-        border: 1px solid green;
-        background-color: green;
-    }
-    .card-item.black {
-        border: 1px solid pink;
-        background-color: pink;
-    }
+  // .container {
+  //       width: 500px;
+  //       height: 300px;
+  //       padding: 20px;
+  //       border: 1px solid #ccc;
+  //       position: relative;
+  //   }
+    // .card-item {
+    //     width: 700px;
+    //     height: 200px;
+    //     line-height: 198px;
+    //     text-align: center;
+    //     font-size: 18px;
+    //     border-radius: 5px;
+    //     position: absolute;
+    // }
+    // .card-item.t30 {
+    //     top: 30px;
+    //     animation: positionAnimate1 1.1s
+    // }
+    // .card-item.t60 {
+    //     top: 60px;
+    //     animation: positionAnimate1 0.9s
+    // }
+    // .card-item.t90 {
+    //     top: 90px;
+    //     animation: positionAnimate1 0.7s
+    // }
+    // .card-item.t120 {
+    //     top: 120px;
+    //     box-shadow: 0 0 2px 2px #fff;
+    //     animation: positionAnimate 0.5s
+    // }
+    // .card-item.t150 {
+    //     top: 150px;
+    //     box-shadow: 0 0 2px 2px #fff;
+    //     animation: positionAnimate 0.3s
+    // }
+    // @keyframes positionAnimate1 {
+    //     0% {
+    //         opacity: 0;
+    //         transform: scale(0.9);
+    //     }
+    //     100% {
+    //         transform: scale(1);
+    //         opacity: 1;
+    //     }
+    // }
+    // @keyframes positionAnimate {
+    //     0% {
+    //         opacity: 0;
+    //         transform: scale(1.1);
+    //     }
+    //     100% {
+    //         transform: scale(1);
+    //         opacity: 1;
+    //     }
+    // }
+    // .card-item.z1 {
+    //     z-index:  1;
+    // }
+    // .card-item.z2 {
+    //     z-index:  2;
+    // }
+    // .card-item.z3 {
+    //     z-index:  3;
+    // }
+    // .card-item.z4 {
+    //     z-index:  4;
+    // }
+    // .card-item.z5 {
+    //     z-index:  5;
+    // }
+    // .card-item.red {
+    //     border: 1px solid grey;
+    //     background-color: grey;
+    // }
+    // .card-item.blue {
+    //     border: 1px solid blue;
+    //     background-color: blue;
+    // }
+    // .card-item.yellow {
+    //     border: 1px solid brown;
+    //     background-color: brown;
+    // }
+    // .card-item.green {
+    //     border: 1px solid green;
+    //     background-color: green;
+    // }
+    // .card-item.black {
+    //     border: 1px solid pink;
+    //     background-color: pink;
+    // }
   .Sidebar {
-
     // position: relative;
     // width: 20%;
     // min-width: 400px;
@@ -114,25 +113,22 @@
         }
     }
   .form-create-wrap {
-    padding-top:100px;
     $green: #4ca2ae;
     $grey: rgba(0,0,0,.5);
     position: relative;
     width: 80%;
     min-width: 400px;
-    margin: 50px auto;
+    margin: 30px auto;
     @media (min-width: 520px) {
       width: 100%;
     }
      .fa-home {
         font-size: 20px !important;
     }
-
     .nav-sm .fa-home {
         font-size: 32px !important;
     }
     // .Sidebar {
-
     // // position: relative;
     // // width: 20%;
     // // min-width: 400px;
@@ -159,7 +155,6 @@
         width: 100%;
       }
       display: flex;
-
       .content-wrap {
         flex: 1;
         background-color: #fff;
@@ -477,11 +472,8 @@
 </style>
 <template>
 
-  
   <div class="form-create-wrap">
-    
-    <loading :loading="loading"></loading>
-    
+    <!-- <loading :loading="loading"></loading> -->
     <!-- <div class="container">
         <div class="card-item" v-for="(item,index) in cardArrs"
              :class="[item.bgColor ,'z'+item.zIndex, 't'+item.zIndex*30]"
@@ -489,23 +481,21 @@
             {{item.text}}
         </div>
     </div> -->
-    <div class="Sidebar" v-if="data.component.length">
-      <div class="swiper-container">
+    <!-- <div class="Sidebar" v-if="data.component.length">
+      <!-- <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(item,index) in images" :key="index">
             <img class="swiper-img" :src="item" />
           </div>
         </div>
-      </div>  
+      </div> -->
         <!-- <div class="sidebar-li" @click="addNodeFn">
-          <i class="el-icon-plus"></i> -->
-          
-          <!-- <canvas id="mycanvas" width="10" height="10"></canvas> -->
-        <!-- </div> -->
-        <!-- <div id="mountNode"> -->
-        <!-- </div>   -->
-        
-    </div>
+          <i class="el-icon-plus"></i>
+        </div> -->
+        <!-- <div id="mountNode">
+        </div>
+        <canvas id="mycanvas" width="300" height="1000"></canvas>
+    </div> -->
 
     <div class="wrap" v-if="!loading">
       <div class="content-wrap">
@@ -521,7 +511,7 @@
               :name="item">
             </el-tab-pane>
           </el-tabs>
-          
+
           <div class="li" v-for="i in data.name" v-if="i.language === langCode[langList.indexOf(tabLang)]">
             <textarea class="title-area" id=titlearea placeholder="Title" v-model="i.componentnaire_name" @focus="$autoText($event)" @input="$autoText($event)"></textarea>
           </div>
@@ -537,20 +527,16 @@
             <i class="el-icon-plus"></i>
           </div>
         </div>
+        <!--here here-->
         <div class="q-wrap">
-          <draggable v-for="data, index in data.component" :key="index" v-model="data.component" :options="{group:'people'}" :move="onMove" @start="drag=true" @end="onEnd">
-            <div class="container">
-           <div class="card-item" v-for="(item,index) in cardArrs"
-             :class="[item.bgColor ,'z'+item.zIndex, 't'+item.zIndex*30]"
-             @click.stop="changeArrIndex(index)">
-            {{item.text}}
-            </div>
-          </div>
+          <draggable v-for="i in lvl" :key=i v-model="data.component" :options="{group:'people'}" :move="onMove" @start="drag=true" @end="onEnd">
+        <div class="q-wrap">
+          <b-tabs content-class="mt-3">
+          <b-tab v-for="data, index in data.component" key="index" v-model="data.component" title= "index" active>
             <div class="q-li" :class="{'q-li-focus': focusIndex === index}" id="items" @click="focusItem($event, index)">
-              <div class="drap-area">
+              <div class="drap-area" >
                 <i class="iconfont icon-tuozhuai"></i>
               </div>
-              
               <div class="q-item-wrap" v-for="content, index1 in data.content" v-if="content.language === langCode[langList.indexOf(tabLang)]">
                 <div class="q-item q-title-wrap">
                   <div class="q-title">
@@ -558,7 +544,7 @@
                       <textarea class="q-area" id="testing" placeholder="Content" v-model="content.title" @focus="$autoText($event)" @input="$autoText($event)"></textarea>
                     </div>
                   </div>
-                  <el-select class="q-select" v-if="focusIndex === index" v-model="data.types" filterable placeholder="请选择">
+                  <el-select class="q-select" v-if="focusIndex === index" v-model="data.types" filterable placeholder="请选择" align="right">
                     <el-option
                       v-for="item in selectOptions"
                       :key="item"
@@ -667,14 +653,23 @@
                 </div>
               </div>
             </div>
+
+          </b-tab>
+          </b-tabs>
+        </div>
           </draggable>
         </div>
       </div>
-      <div class="form-sidebar" v-if="data.component.length">
+      <!-- <div class="form-sidebar" v-if="data.component.length">
         <div class="sidebar-li" @click="addListFn">
           <i class="el-icon-plus"></i>
         </div>
-      </div>
+      </div> -->
+    </div>
+    <div>
+      <b-button squared variant="outline-warning" >
+        <i class="el-icon-plus" @click="addListFn"></i>
+      </b-button>
     </div>
     <div class="form-save" @click="saveFn" v-if="!loading" >Submit</div>
     <el-dialog class="add-lang" title="Add new" :visible.sync="addLangVisible" :close-on-click-modal="false" top="34%">
@@ -695,8 +690,6 @@
       </div>
     </el-dialog>
     </div>
- 
-    
 </template>
 
 <script>
@@ -765,7 +758,30 @@
           repeat_submit: false,
           component: [{
             component_id: 1,
-            parent_id: 0,
+            types: 'Situation',
+            is_required: false,
+            content: [
+              {
+                language: 'cn',
+                title: '',
+                condition: [{
+                  condition_id: 1,
+                  description: 'Condition 1'
+                }]
+              }
+            ]}
+          ]
+        },
+        lvl :{
+          display_name: '',
+          name: [{
+            componentnaire_name: '',
+            desc: '',
+            language: 'cn'
+          }],
+          repeat_submit: false,
+          component: [{
+            component_id: 1,
             types: 'Situation',
             is_required: false,
             content: [

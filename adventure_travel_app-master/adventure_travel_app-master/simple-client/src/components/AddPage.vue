@@ -55,7 +55,8 @@
       <button class="btn btn-success" @click="newPage">Add</button>
       <div style="margin-bottom:10px;"></div>
       <div></div>
-      <router-link :to="{path:'/pages/edit'}" style="font-size: 14px;color: orange;">立即注册</router-link>
+      <!-- <router-link :to="{path:'/pages/edit'}" style="font-size: 14px;color: orange;">Edit Now</router-link> -->
+      <button class="btn btn-success" @click="jump">Edit Now</button>
     </div>
   </div>
 </template>
@@ -103,6 +104,13 @@ export default {
     newPage() {
       this.submitted = false;
       this.page = {};
+    },
+     jump(){
+    //this.$router.push("/cart")
+    //传递的参数用{{ $route.query.goodsId }}获取
+    this.$router.push({path: '/pages/edit'})
+    //this.$router.go(-2)
+    //后退两步
     },
     go(){
        window.open('localhost:8022',"_blank")
