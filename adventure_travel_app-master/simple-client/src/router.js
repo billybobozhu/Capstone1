@@ -24,6 +24,11 @@ export default new Router({
       component: () => import("./components/create")
     },
     {
+      path: "/pages/update/:id",
+      name: "page-update",
+      component: () => import("./components/update")
+    },
+    {
       path: '/login',
       component: Login
     },

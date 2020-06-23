@@ -64,7 +64,7 @@
         </div>
 
         <a class="badge badge-warning"
-          :href="'/pages/' + currentPage.id"
+          :href="'/pages/update/' + currentPage.id"
         >
           view
         </a>

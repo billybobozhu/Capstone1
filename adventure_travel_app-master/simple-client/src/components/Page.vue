@@ -15,7 +15,9 @@
         />
       </div>
       <div class="form-group">
-        <label for="content">Content</label>
+        <label for="content">
+          
+        </label>
         <input type="text" class="form-control" id="content"
           v-model="currentPage.content['content']"
         />

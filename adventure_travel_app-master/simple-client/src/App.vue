@@ -13,7 +13,7 @@
           <router-link v-if="currentUser" to="/user" class="nav-link">User</router-link>
         </li>
         <li class="nav-item">
-          <router-link v-if="currentUser" to="/add" class="nav-link">Add</router-link>
+          <router-link v-if="currentUser" to="/pages/edit" class="nav-link">Add</router-link>
         </li>
       </div>
       <div v-if="!currentUser" class="navbar-nav ml-auto">
