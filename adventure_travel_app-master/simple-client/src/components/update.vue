@@ -434,7 +434,7 @@
             <textarea class="title-area" id=intro placeholder="Introduction" v-model="currentPage.description" @focus="$autoText($event)" @input="$autoText($event)"></textarea>
           </div>
           <div class="li-right">
-            <!-- <span>允许重复提交</span>i
+            <!-- <span>允许重复提交</span>
             <el-switch :width="40" on-color="#4ca2ae" v-model="data.repeat_submit" on-text="" off-text="">
             </el-switch> -->
           </div>
@@ -442,7 +442,6 @@
             <i class="el-icon-plus"></i>
           </div>
         </div>
-        
         <div class="q-wrap">
           <draggable v-for="data, index in data.component" :key="index" v-model="data.component" :options="{group:'people'}" :move="onMove" @start="drag=true" @end="onEnd">
             <div class="q-li" :class="{'q-li-focus': focusIndex === index}" id="items" @click="focusItem($event, index)">
@@ -454,7 +453,7 @@
                 <div class="q-item q-title-wrap">
                   <div class="q-title">
                     <div class="li">
-                      <textarea class="q-area" id="testing" placeholder="Content" v-model="currentPage.content[0].content[0].title " @focus="$autoText($event)" @input="$autoText($event)"></textarea>
+                      <textarea class="q-area" id="testing" placeholder="Content" v-model="content.title" @focus="$autoText($event)" @input="$autoText($event)"></textarea>
                     </div>
                   </div>
                   <el-select class="q-select" v-if="focusIndex === index" v-model="data.types" filterable placeholder="请选择">
@@ -575,7 +574,7 @@
         </div>
       </div>
     </div>
-    <div class="form-save" @click="testlength" v-if="!loading" >Submit</div>
+    <div class="form-save" @click="saveFn" v-if="!loading" >Submit</div>
     <el-dialog class="add-lang" title="Add new" :visible.sync="addLangVisible" :close-on-click-modal="false" top="34%">
       <div class="li-item">
         <span class="label">Choose</span>
@@ -601,8 +600,8 @@
 <script>
   import draggable from 'vuedraggable'
   import loading from '@/components/loading.vue'
-  // import {init,update} from '@/components/g6Utils.min.js'
   import PageDataService from "../services/PageDataService"
+  // import {init,update} from '@/components/g6Utils.min.js'
 
   let lineEndOptions = Array.apply(null, Array(9)).map((item, i) => {
     return i + 2
@@ -613,8 +612,6 @@
     data () {
       that = this
       return {
-        currentPage: null,
-        message: '',
         auth: false,
         loading: false,
         selectOptions: ['Situation', 'Story'],
@@ -684,12 +681,7 @@
       loading
     },
     methods: {
-      testlength(){
-        let length =  that.currentPage.content.length
-        window.alert(length)
-        
-      },
-      getPage(id) {
+       getPage(id) {
       PageDataService.get(id)
         .then(response => {
           that.currentPage = response.data;
@@ -701,35 +693,6 @@
           console.log(e);
         });
     },
-      display(){
-        window.alert(this.currentPage.title)
-      },
-       changeArrIndex(index){
-                let _zIndex = "";
-                let _newArr = [];
-                this.cardArrs.forEach((item,idx)=> {
-                    let _obj = {};
-                    if(idx == index) {
-                        _zIndex = item.zIndex;
-                        _obj.zIndex = this.maxLength;
-                        _obj.bgColor = item.bgColor;
-                        _obj.text = item.text;
-                        _obj.flag = true;
-                        _newArr.push(_obj)
-                    }else {
-                        _newArr.push(item)
-                    }
-                });
-                _newArr.forEach((obj)=>{
-                   if(obj.zIndex == this.maxLength && !obj.flag) {
-                       obj.zIndex = _zIndex;
-                   }
-                });
-                _newArr.map((item)=>{
-                    delete item.flag;
-                });
-                this.cardArrs = _newArr;
-            },
       onEnd () {
         that.drag = false
       },
@@ -774,20 +737,20 @@
         var blob = new Blob([content], {type: 'text/plain;charset=utf-8'})
         FileSaver.saveAs(blob, 'save.json')
       },
-      loadComponent(){
+       loadComponent(){
         let length =  that.currentPage.content.length-1
         
-        for(var index=0;index<length;index++){
+        for(var index=0;index<length+1;index++){
          let codeList = that.editableTabs.map((i) => {
           return that.langCode[that.langList.indexOf(i)]
         })
         let contentList = codeList.map((i) => {
           return {
             language: i,
-            title: '',
+            title: that.currentPage.content[index].content[0].title,
             condition: [{
               condition_id: 1,
-              description: 'Condition1'
+              description: 'condition1'
             }]
           }
         })
@@ -801,6 +764,7 @@
         that.focusIndex = that.data.component.length - 1
         // this.saveFn(list.component_id)
         }
+        that.deleteListFn(0)
         
       },
       addListFn (index) {
@@ -862,19 +826,45 @@
         that.focusIndex = i === 0 && that.data.component.length > 0 ? i : i - 1
       },
       saveFn () {
-        window.alert(that.$route.params.id)
-        //  var FileSaver = require('file-saver')
-        // // let k = ''
-        // // let e = document.getElementsByTagName('input')
-        // // for (var i = 0; i < e.length; i++) {
-        // //   if (e[i].getAttribute('id') === 'testing') {
-        // //     k += e[i].value
-        // //   }
-        // // }
-        // // // window.alert(k)
-        // // var all = JSON.stringify(that.data.component)
-        // // var blob1 = new Blob([all], {type: 'text/plain;charset=utf-8'})
-        // // FileSaver.saveAs(blob1, 'pageall.json')
+        var FileSaver = require('file-saver')
+        // var all = JSON.stringify(that.data)
+        // var blob1 = new Blob([all], {type: 'text/plain;charset=utf-8'})
+        // FileSaver.saveAs(blob1, 'pageall.json')
+
+        var data = {
+        title: that.data.name[0].componentnaire_name,
+        description: that.data.name[0].desc,
+        content: that.data.component,
+        authorid: this.$store.state.auth.user.id,
+        tags: that.data.display_name
+        };
+        PageDataService.create(data)
+        .then(response => {
+          this.page.id = response.data.id;
+          console.log(response.data);
+          this.submitted = true;
+        })
+        .catch(e => {
+          console.log(e);
+        });
+        window.alert("upload successfully")
+        //window.alert(title)
+        // var all = JSON.stringify(data)
+        // var blob1 = new Blob([all], {type: 'text/plain;charset=utf-8'})
+        // FileSaver.saveAs(blob1, 'pageall.json')
+
+
+        // let k = ''
+        // let e = document.getElementsByTagName('input')
+        // for (var i = 0; i < e.length; i++) {
+        //   if (e[i].getAttribute('id') === 'testing') {
+        //     k += e[i].value
+        //   }
+        // }
+        // // window.alert(k)
+        // var all = JSON.stringify(that.data.component)
+        // var blob1 = new Blob([all], {type: 'text/plain;charset=utf-8'})
+        // FileSaver.saveAs(blob1, 'pageall.json')
         // let n = document.getElementById('tagmanager').value
         // let o = document.getElementById('titlearea').value
         // let m = document.getElementById('intro').value
@@ -892,6 +882,10 @@
         // FileSaver.saveAs(blob, 'pageinfo.json')
         // // window.alert(e)
       },
+      newPage() {
+      this.submitted = false;
+      this.page = {};
+    },
       addLangFn () {
         let value = that.defaultLang
         if (that.editableTabs.indexOf(value) > -1) {
@@ -976,7 +970,8 @@
           })
         }
       }
-    },
+    }
+    ,
     mounted() {
     that.message = '';
     that.getPage(that.$route.params.id);
