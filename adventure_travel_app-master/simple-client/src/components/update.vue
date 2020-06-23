@@ -575,6 +575,7 @@
       </div>
     </div>
     <div class="form-save" @click="saveFn" v-if="!loading" >Submit</div>
+     <div class="form-save" @click="deletePage" v-if="!loading" >Delete</div>
     <el-dialog class="add-lang" title="Add new" :visible.sync="addLangVisible" :close-on-click-modal="false" top="34%">
       <div class="li-item">
         <span class="label">Choose</span>
@@ -681,6 +682,16 @@
       loading
     },
     methods: {
+      deletePage() {
+      PageDataService.delete(this.currentPage.id)
+        .then(response => {
+          console.log(response.data);
+          this.$router.push({ name: "pages" });
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
        getPage(id) {
       PageDataService.get(id)
         .then(response => {
