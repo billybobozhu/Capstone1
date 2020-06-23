@@ -743,14 +743,18 @@
         for(var index=0;index<length+1;index++){
          let codeList = that.editableTabs.map((i) => {
           return that.langCode[that.langList.indexOf(i)]
+
         })
+        
+        
         let contentList = codeList.map((i) => {
           return {
             language: i,
             title: that.currentPage.content[index].content[0].title,
             condition: [{
               condition_id: 1,
-              description: 'condition1'
+              description: that.currentPage.content[index].content[0].condition[0].description
+              //description: that.currentPage.content[index].content[0].condition.length
             }]
           }
         })
@@ -760,11 +764,17 @@
           is_required: false,
           content: contentList
         }
+        
         that.data.component.push(list)
         that.focusIndex = that.data.component.length - 1
         // this.saveFn(list.component_id)
+        // let conditionLength=that.currentPage.content[index].content[0].condition.length
+        // for (var x=1;x<conditionLength+1;x++){
+        //   that.addFormFn(list)
+        // }
         }
         that.deleteListFn(0)
+        
         
       },
       addListFn (index) {
